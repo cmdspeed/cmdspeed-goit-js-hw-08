@@ -4,7 +4,10 @@ const message = document.querySelector('.feedback-form textarea');
 
 import * as throttle from 'lodash.throttle';
 
-const formValue = {};
+let formValue = {
+  email: '',
+  message: '',
+};
 
 form.addEventListener('input', throttle(setLocalStorage, 500));
 form.addEventListener('submit', submitForm);
@@ -30,4 +33,8 @@ function submitForm(event) {
   event.preventDefault();
   event.currentTarget.reset();
   localStorage.removeItem('feedback-form-state');
+  formValue = {
+    email: '',
+    message: '',
+  };
 }
